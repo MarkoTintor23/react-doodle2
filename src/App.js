@@ -1,6 +1,7 @@
 import { createContext, useState } from "react";
 import "./App.css";
 import Payment from "./Components/Payment";
+import { CURRENCIES } from "./Utils/CurrencyUtil";
 
 export const CurrencyContext = createContext("USD");
 export const AmountContext = createContext(0);
@@ -8,8 +9,8 @@ export const AmountContext = createContext(0);
 function App() {
   const [currency, setCurrency] = useState("USD");
   const [amount, setAmount] = useState(0);
-  const updateCurrency = () => {
-    setCurrency("EUR");
+  const updateCurrency = (currency) => {
+    setCurrency(currency);
   };
 
   const updateAmount = (value) => {
@@ -22,7 +23,13 @@ function App() {
           <Payment />
         </AmountContext.Provider>
         <input onInput={(e) => updateAmount(e.target.value)} />
-        <button onClick={updateCurrency}>Change currency</button>
+        <select onChange={(e) => updateCurrency(e.target.value)}>
+          {Object.keys(CURRENCIES).map((currency) => (
+            <option key={currency} value={currency}>
+              {currency}
+            </option>
+          ))}
+        </select>
       </CurrencyContext.Provider>
     </div>
   );
