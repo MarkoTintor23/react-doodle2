@@ -23,6 +23,10 @@ function App() {
           <Payment />
         </AmountContext.Provider>
         <input onInput={(e) => updateAmount(e.target.value)} />
+        <input
+          placeholder="enter your Username"
+          onInput={(e) => setUserName(e.target.value)}
+        />
         <select onChange={(e) => updateCurrency(e.target.value)}>
           {Object.keys(CURRENCIES).map((currency) => (
             <option key={currency} value={currency}>
