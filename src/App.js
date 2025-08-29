@@ -7,12 +7,10 @@ export const CurrencyContext = createContext("USD");
 export const AmountContext = createContext(0);
 
 function App() {
-
-  const []
-
-
   const [currency, setCurrency] = useState("USD");
   const [amount, setAmount] = useState(0);
+  const [userName, setUserName] = useState(null);
+  console.log(userName);
   const updateCurrency = (currency) => {
     setCurrency(currency);
   };
